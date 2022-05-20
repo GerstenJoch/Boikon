@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "bwvaeRxTSJjkyrzkfTsCTBu5qZUAM5vlDXSQ0+VqDC5vvxcfcJKvFqAZShBup4mk2uHYM50635KPXnFfZhbNNQ==",
+  "dgSpecHash": "LpDKYvBoQfL0D8moTV/NpNVN7tjqjXG2ILqMYDdxpLn+M24m520Q+5FXTwsJOfeiG3EV+408KxQ4vbceAXTXpQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Alexander\\Documents\\Boikon\\Boikon Application\\Boikon Application.csproj",
+  "projectFilePath": "C:\\Users\\Alexander\\source\\repos\\Boikon\\Boikon Application\\Boikon Application.csproj",
   "expectedPackageFiles": [
     "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\microsoft.net.native.compiler\\2.2.11-rel-30601-02\\microsoft.net.native.compiler.2.2.11-rel-30601-02.nupkg.sha512",
     "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\microsoft.net.uwpcoreruntimesdk\\2.2.13\\microsoft.net.uwpcoreruntimesdk.2.2.13.nupkg.sha512",

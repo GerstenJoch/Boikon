@@ -8166,11 +8166,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Alexander\\Documents\\Boikon\\Boikon Application\\Boikon Application.csproj",
+      "projectUniqueName": "C:\\Users\\Alexander\\source\\repos\\Boikon\\Boikon Application\\Boikon Application.csproj",
       "projectName": "Boikon Application",
-      "projectPath": "C:\\Users\\Alexander\\Documents\\Boikon\\Boikon Application\\Boikon Application.csproj",
+      "projectPath": "C:\\Users\\Alexander\\source\\repos\\Boikon\\Boikon Application\\Boikon Application.csproj",
       "packagesPath": "C:\\Users\\Alexander\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Alexander\\Documents\\Boikon\\Boikon Application\\obj\\",
+      "outputPath": "C:\\Users\\Alexander\\source\\repos\\Boikon\\Boikon Application\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
