@@ -1,1 +1,0 @@
-C:\Users\Alexander\source\repos\Boikon\Boikon Application\Boikon Application.csproj;x64
