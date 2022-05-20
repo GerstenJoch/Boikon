@@ -13,6 +13,9 @@
             <ColumnDefinition Width="749*"/>
             <ColumnDefinition Width="751*"/>
         </Grid.ColumnDefinitions>
+        <TextBox HorizontalAlignment="Left" Margin="665,330,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" TextChanged="TextBox_TextChanged"/>
+        <Button Content="Button" Margin="699,391,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <Button Content="Button" Margin="594,391,0,0" VerticalAlignment="Top" Click="Button_Click"/>
 
     </Grid>
 </Page>
