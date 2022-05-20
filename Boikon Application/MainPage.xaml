@@ -8,10 +8,18 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid x:Name="MainPage1" FocusVisualPrimaryBrush="#FFFF1F1F">
+    <Grid x:Name="MainPage1" FocusVisualPrimaryBrush="#FFFF">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+        <Grid x:Name="Gegevens" Margin="0,0,960,702" HorizontalAlignment="Right" Width="850" Height="300" VerticalAlignment="Bottom" RenderTransformOrigin="0.483,0.521" Visibility="Visible" RequestedTheme="Light" FocusVisualSecondaryBrush="#000" FocusVisualPrimaryBrush="#000">
+            <GroupItem>
+                <GroupItem Content="Gegevens"/>
+
+            </GroupItem>
+        </Grid>
+        <TextBlock HorizontalAlignment="Left" Margin="119,114,0,0" TextWrapping="Wrap" Text="Project nr." VerticalAlignment="Top"/>
+        <Grid/>
 
     </Grid>
 </Page>
