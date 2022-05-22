@@ -5,15 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Boikon"
         mc:Ignorable="d" 
-             Background="White"
-             d:DesignWidth="1920" d:DesignHeight="1080">
+        Background="White"
+        d:DesignWidth="1920" d:DesignHeight="1080" >
+
     <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="122*"/>
+            <ColumnDefinition Width="181*"/>
+            <ColumnDefinition Width="337*"/>
+        </Grid.ColumnDefinitions>
+
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="219*"/>
+            <RowDefinition Height="221*"/>
         </Grid.RowDefinitions>
 
-        <GroupBox Grid.Column="0" Grid.Row="0" Margin="10,10,1572,10">
+        <GroupBox Grid.Column="0" Grid.Row="0" Margin="10,10,26,10">
             <GroupBox.Header>
                 <TextBlock>
                     <Span FontWeight="Bold">Gegevens</Span>
@@ -35,26 +44,17 @@
                     <ColumnDefinition Width="33*"/>
                     <ColumnDefinition Width="761*"/>
                 </Grid.ColumnDefinitions>
-
                 <Label Grid.Column="0" Content="Projectnummer:" VerticalAlignment="Center" Grid.ColumnSpan="3"/>
                 <TextBox Grid.Column="3" Name="tbGegevensProjectnr" VerticalAlignment="Center" IsEnabled="False" Text="69420666"/>
-
                 <Label Grid.Row="1" Grid.Column="0" Content="Projectleider:" VerticalAlignment="Center" Grid.ColumnSpan="3"/>
                 <TextBox Grid.Column="3" Grid.Row="1" Name="tbGegevensProjectleider" VerticalAlignment="Center" IsEnabled="False" Text="De Geweldige Sander Reinders"/>
-
                 <Label Grid.Row="2" Grid.Column="0" Content="Projectnaam:" VerticalAlignment="Center" Grid.ColumnSpan="3"/>
                 <TextBox Grid.Row="2" Grid.Column="3" Name="tbGegevensProjectnaam" VerticalAlignment="Center" IsEnabled="False" Text="YII WEST"/>
-
-                <Label Grid.Row="3" Grid.Column="0" Content="Bewerker:" VerticalAlignment="Top" Grid.ColumnSpan="3" Margin="0,17,0,0"/>
+                <Label Grid.Row="3" Grid.Column="0" Content="Bewerker:" Name="lblGegevensBewerker" VerticalAlignment="Top" Grid.ColumnSpan="3" Margin="0,17,0,0"/>
                 <ComboBox Grid.Row="3" Grid.Column="3" Name="CB_Bewerker" VerticalAlignment="Top" SelectedValue="{Binding Path=Responsible}" Margin="0,6,0,0"  />
-
-
             </Grid>
         </GroupBox>
-
-
-
-        <GroupBox Grid.Row="0" Margin="408,10,1097,10">
+        <GroupBox Grid.Row="0" Margin="34,10,86,10" Grid.Column="1">
             <GroupBox.Header>
                 <TextBlock HorizontalAlignment="Left" Width="27">
                     <Span FontWeight="Bold">Zaag</Span>
@@ -71,93 +71,83 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="50"/>
                     <ColumnDefinition Width="72"/>
-                    <ColumnDefinition Width="177"/>
-                    <ColumnDefinition Width="99*"/>
-                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="220"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="0*"/>
                 </Grid.ColumnDefinitions>
 
-                <Label Grid.Row="1" Grid.Column="0" Content="Aantal:" VerticalAlignment="Center" FontSize="12" Height="26" />
-                <TextBox Grid.Row="1" Grid.Column="1" Name="tbZaagAantal" VerticalAlignment="Center" Height="18"/>
-                <Label Grid.Row="2" Grid.Column="0" Content="Lengte:" VerticalAlignment="Center" FontSize="12" Height="26" />
-                <TextBox Grid.Row="2" Grid.Column="1" Name="tbZaagLengte" VerticalAlignment="Center" IsEnabled="False" Height="18" Text="6 m/stuk" />
-                <Label Grid.Column="2" Content="Artikel:" VerticalAlignment="Top" Height="30" Margin="10,-7,1,0" FontSize="11"/>
-                <ComboBox Grid.Column="2" Name="CB_Artikel" VerticalAlignment="Top" SelectedValue="{Binding Path=Responsible}" Margin="10,12,47,0" Height="22" Grid.ColumnSpan="2" />
-                <StackPanel Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="0,0,0,30">
-                    <Button Content="Stuur" Width="70" Height="22" Name="BTN_Send" Click="BTN_Send_Click"/>
+                <StackPanel Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right" Grid.RowSpan="3" Margin="0,14,27,10">
+                    <Button Content="Stuur" Width="81" Height="29" x:Name="BTN_Send" Click="BTN_Send_Click" FontSize="14"/>
                 </StackPanel>
+                <Label Grid.Row="2" Grid.Column="2" x:Name="lblZaagError"  Content="U hebt nog niet alles juist ingevoerd" Foreground="Red" FontSize="10" Grid.ColumnSpan="3" Visibility="Collapsed" Margin="116,15,-35,2" Grid.RowSpan="2"/>
+                <Label Grid.Row="1" Grid.Column="0" Content="Aantal:" x:Name="lblZaagAantal"  VerticalAlignment="Center" FontSize="12" Height="26" />
+                <TextBox Grid.Row="1" Grid.Column="1" x:Name="tbZaagAantal" VerticalAlignment="Center" Height="18"/>
+                <Label Grid.Row="2" Grid.Column="0" Content="Lengte:" VerticalAlignment="Center" FontSize="12" Height="26" />
+                <TextBox Grid.Row="2" Grid.Column="1" x:Name="tbZaagLengte" VerticalAlignment="Center" IsEnabled="False" Height="18" Text="6 m/stuk" />
+                <Label Grid.Column="1" Content="Artikel:" x:Name="lblZaagArtikel"  VerticalAlignment="Top" Height="30" Margin="67,-8,0,0" FontSize="11" Grid.ColumnSpan="2"/>
+                <ComboBox Grid.Column="2" x:Name="CB_Artikel" VerticalAlignment="Top" SelectedValue="{Binding Responsible}" Margin="0,10,0,0" Height="22" />
 
             </Grid>
-
         </GroupBox>
-
-
-
-
-
-
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="1" Grid.ColumnSpan="3" Grid.RowSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="43*"/>
+                <RowDefinition Height="37*"/>
+            </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="151*"/>
+                <ColumnDefinition Width="169*"/>
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
-
-            <GroupBox Grid.Column="0" Margin="10,10,1036,440">
+            <GroupBox Grid.Row="0" Grid.Column="0" Margin="10,0,40,0">
                 <GroupBox.Header>
                     <TextBlock><Run x:Name="lblAfschrijving" Text="Afschrijving"/></TextBlock>
                 </GroupBox.Header>
             </GroupBox>
-            <Grid Margin="0,40,1054,440" HorizontalAlignment="Right" Width="856">
+            <Grid Margin="0,40,40,19" HorizontalAlignment="Right" Width="856">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="37"/>
                     <RowDefinition Height="37"/>
                     <RowDefinition/>
-                    <RowDefinition Height="280.04"/>
+                    <RowDefinition Height="91.5"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="110"/>
                     <ColumnDefinition Width="65"/>
                     <ColumnDefinition Width="116"/>
-                    <ColumnDefinition Width="538*"/>
-                    <ColumnDefinition Width="27*"/>
+                    <ColumnDefinition Width="496*"/>
+                    <ColumnDefinition Width="69*"/>
                 </Grid.ColumnDefinitions>
-
-                <Image Grid.Column="0" Grid.Row="3" Source="C:/Users/sande/Downloads/Boikoncode/UploadCamera.png" Grid.ColumnSpan="3" Margin="83,59,101,132"/>
-
-
-
-                <GroupBox Grid.Row="3" Grid.Column="0" Margin="10,0,28,30" Grid.ColumnSpan="3">
+                <Button Grid.Row="2" Grid.Column="0" Style="{StaticResource BTN_Upload}" Height="130" VerticalAlignment="Top" HorizontalAlignment="Center" Width="130" x:Name="BTN_Upload" Click="BTN_Upload_Click" Grid.ColumnSpan="3" Margin="0,72,0,0">
+                    <Button.Background>
+                        <ImageBrush ImageSource="C:/Users/sande/Downloads/Boikoncode/UploadCamera.png"/>
+                    </Button.Background>
+                    <Button.Content>
+                        <TextBlock Margin="0,85,0,0" x:Name="lblAfschrijvingUploadSticker">Upload Sticker</TextBlock>
+                    </Button.Content>
+                </Button>
+                <Label Grid.Row="3" Grid.Column="3" x:Name="lblAfschrijvingError" HorizontalAlignment="Left"  Content="U hebt nog niet alles juist ingevoerd" Foreground="Red" FontSize="12" Grid.ColumnSpan="2" Visibility="Collapsed" Margin="354,5,0,59" Width="201"/>
+                <GroupBox Grid.Row="2" Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Center" Width="230" Height="230" Grid.ColumnSpan="3" Grid.RowSpan="2" Margin="0,22,0,0">
                     <GroupBox.Header>
                         <TextBlock><Span FontWeight="Bold"><Run Text="Sticker"/></Span></TextBlock>
                     </GroupBox.Header>
-                    <Button Grid.Row="3" Grid.Column="0" Height="90" x:Name="BTN_Upload"  Click="BTN_Upload_Click" Margin="66,0,67,54" Background="Transparent" Foreground="Transparent" />
                 </GroupBox>
-                <Label Grid.Column="0" Grid.Row="3 " Content="  Upload Sticker" VerticalAlignment="Top" Height="30" Margin="89,123,107,0" FontSize="11" Grid.ColumnSpan="3"/>
-
-
-
-
+                <Label Grid.Row="1" Grid.Column="0" Content="Actueel Gebruik:" x:Name="lblAfschrijvingActueelGebruik" VerticalAlignment="Center" FontSize="12" Height="26" Background="White" />
 
                 <Label Grid.Column="0" Content="Verwacht Gebruik:" VerticalAlignment="Center" FontSize="12" Height="26" />
                 <TextBox Grid.Column="1" x:Name="tbAfschrijvingVerwachtGebruik" IsEnabled="False" Text="18" VerticalAlignment="Center" Height="18"/>
                 <Label Grid.Column="1" Content="m" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="12" Height="26" IsEnabled="False" Margin="45,0,0,0" Width="20" />
-                <Label Grid.Row="1" Grid.Column="0" Content="Actueel Gebruik:" VerticalAlignment="Center" FontSize="12" Height="26" />
                 <TextBox Grid.Row="1" Grid.Column="1" x:Name="tbAfschrijvingActueelGebruik" VerticalAlignment="Center" Height="18" />
-                <Label Grid.Row="1" Grid.Column="1" Content="m" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="12" Height="26" Margin="45,0,0,0" Width="20" />
-                <StackPanel Grid.Row="3" Grid.Column="3" Orientation="Horizontal" Margin="455,174,-56,-12" Grid.ColumnSpan="2">
-                    <Button Content="Verstuur" Width="82" Height="29" x:Name="BTN_Push" Click="BTN_Send_Click"/>
+                <StackPanel Grid.Row="3" Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Left" Width="109" Margin="387,0,0,0">
+                    <Button Content="Verstuur" Width="109" Height="37" x:Name="BTN_Push" Click="BTN_Send_Click" FontSize="15"/>
                 </StackPanel>
-                <TextBox Grid.Column="3" x:Name="tbAfschrijvingReden" VerticalAlignment="Top" Height="234" Margin="0,18,0,0" Grid.RowSpan="4"/>
-                <Label Grid.Column="3" Content="Reden (Alleen invullen indien anders gebruikt dan verwacht)" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="12" Height="26" Margin="0,-8,0,0" Width="332" />
-
-
-
+                <TextBox Grid.Column="3" x:Name="tbAfschrijvingReden" VerticalAlignment="Top" Height="234" Margin="0,18,0,0" Grid.RowSpan="3"/>
+                <Label Grid.Column="3" Grid.Row="0" Content="Reden (Alleen invullen indien anders gebruikt dan verwacht)" x:Name="lblAfschrijvingReden" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="12" Height="26" Margin="0,-2,0,0" Width="332" />
+                <Label Grid.Row="1" Grid.Column="1" Content="m" VerticalAlignment="Center" x:Name ="lblAfschrijvingActueelGebruikEendheid"  HorizontalAlignment="Left" FontSize="12" Height="26" Margin="45,0,0,0" Width="20" />
+                <Label Grid.Row="2" Grid.Column="0" x:Name="lblAfschrijvingStickerConfirmation" Content="" VerticalContentAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" FontStyle="Italic" FontSize="10" Visibility="Visible" Width="230" Height="37" Grid.ColumnSpan="3" VerticalAlignment="Top" Margin="0,195,0,0" />
             </Grid>
-            <TextBlock Text="" Grid.Row="20" Grid.ColumnSpan="2" Height="35" HorizontalAlignment="Left" Name="errorLabel" Width="310" Background="#FFA30000" Foreground="White" Visibility="Collapsed" TextWrapping="Wrap" VerticalAlignment="Bottom"/>
-
-            
+            <TextBlock Text="" Height="35" HorizontalAlignment="Left" x:Name="errorLabel" Width="310" Background="#FFA30000" Foreground="White" Visibility="Collapsed" TextWrapping="Wrap" VerticalAlignment="Bottom" Grid.Row="1"/>
         </Grid>
-        
     </Grid>
-
 
 </UserControl>
