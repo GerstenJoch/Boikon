@@ -103,6 +103,19 @@ namespace Boikon
                     lblAfschrijvingError.Visibility = Visibility.Collapsed;
                     Write_Log();
                 }
+                //Show Prompt
+                string msgtext = "Gelukt! Alles is correct verstuurd.";
+                string txt = "Succesvol verstuurd";
+                MessageBoxButton button = MessageBoxButton.OK;
+                MessageBoxResult result = MessageBox.Show(msgtext, txt, button);
+                //Clear Recent Input
+                tbAfschrijvingReden.Text = "";
+                tbAfschrijvingActueelGebruik.Text = "";
+                tbAfschrijvingVerwachtGebruik.Text = "";
+                tbZaagAantal.Text = "";
+
+
+                
             }
         }
         private void BTN_Upload_Click(object sender, RoutedEventArgs e)
@@ -129,7 +142,7 @@ namespace Boikon
                     lblAfschrijvingStickerConfirmation.Visibility = Visibility.Visible;
                     lblAfschrijvingUploadSticker.Foreground = Brushes.Black;
                     lblAfschrijvingStickerConfirmation.Foreground = Brushes.Black;
-                    using (StreamWriter writer = new StreamWriter("C:/Users/sande/Downloads/Boikoncode/Images.txt"))
+                    using (StreamWriter writer = new StreamWriter("C:/Users/alexander/Downloads/Images.txt"))
                     {
                         writer.WriteLine(sFileName);
                     }
@@ -150,14 +163,10 @@ namespace Boikon
             CB_Bewerker.Items.Add("Alexander Mosselaar");
             CB_Bewerker.Items.Add("Guido Ruijs");
             CB_Bewerker.Items.Add("Sander Reinders");
-            CB_Bewerker.Items.Add("Job van der Mark");
-            CB_Bewerker.Items.Add("Jurre ten Brink");
-            CB_Bewerker.Items.Add("Anne-Maaike Hendriks");
-            CB_Bewerker.Items.Add("Brand Petersen");
         }
         private void Write_Log()
         {
-            using (StreamWriter writer = new StreamWriter("C:/Users/sande/Downloads/Boikoncode/Log.txt"))
+            using (StreamWriter writer = new StreamWriter("C:/Users/alexander/Downloads/Log.txt"))
             {
                 int lengte = 50;
                 writer.WriteLine("Projectnummer: " + tbGegevensProjectnr.Text);
@@ -172,6 +181,11 @@ namespace Boikon
                 writer.WriteLine("Sticker: " + fotoSticker.FileName);
 
             }
+        }
+
+        private void tbZaagAantal_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }
