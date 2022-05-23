@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -14,10 +14,11 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Win32;
+using Boikon;
+using System.Data;
 
 namespace Boikon
 {
-    public sealed class ButtonChrome : System.Windows.Controls.Decorator { }
     /// <summary>
     /// Interaction logic for ZaagAfschrijving.xaml
     /// </summary>
@@ -32,8 +33,9 @@ namespace Boikon
         {
             InitializeComponent();
             Init_Artikelen_En_Bewerkers();
-        }
+            Retrieve_CSV();
 
+        }
         private void BTN_Send_Click(object sender, RoutedEventArgs e)
         {
             if (sender.Equals(BTN_Send))         //Zaag
@@ -102,19 +104,20 @@ namespace Boikon
                 {
                     lblAfschrijvingError.Visibility = Visibility.Collapsed;
                     Write_Log();
+                    string msgtext = "Gelukt! Alles is correct verstuurd.";
+                    string txt = "Succesvol verstuurd";
+                    MessageBoxButton button = MessageBoxButton.OK;
+                    MessageBoxResult result = MessageBox.Show(msgtext, txt, button);
+                    //Clear Recent Input
+                    tbAfschrijvingReden.Clear(); tbAfschrijvingActueelGebruik.Clear(); tbAfschrijvingVerwachtGebruik.Clear(); tbZaagAantal.Clear();
+                    lblAfschrijvingStickerConfirmation.Visibility = Visibility.Collapsed;
+                    using (StreamWriter writer = new StreamWriter("C:/Users/sande/Downloads/Boikoncode/Images.txt"))
+                    {
+                        writer.WriteLine("");
+                    }
+
+
                 }
-                //Show Prompt
-                string msgtext = "Gelukt! Alles is correct verstuurd.";
-                string txt = "Succesvol verstuurd";
-                MessageBoxButton button = MessageBoxButton.OK;
-                MessageBoxResult result = MessageBox.Show(msgtext, txt, button);
-                //Clear Recent Input
-                tbAfschrijvingReden.Text = "";
-                tbAfschrijvingActueelGebruik.Text = "";
-                tbAfschrijvingVerwachtGebruik.Text = "";
-                tbZaagAantal.Text = "";
-
-
                 
             }
         }
@@ -142,7 +145,7 @@ namespace Boikon
                     lblAfschrijvingStickerConfirmation.Visibility = Visibility.Visible;
                     lblAfschrijvingUploadSticker.Foreground = Brushes.Black;
                     lblAfschrijvingStickerConfirmation.Foreground = Brushes.Black;
-                    using (StreamWriter writer = new StreamWriter("C:/Users/alexander/Downloads/Images.txt"))
+                    using (StreamWriter writer = new StreamWriter("C:/Users/sande/Downloads/Boikoncode/Images.txt"))
                     {
                         writer.WriteLine(sFileName);
                     }
@@ -163,10 +166,14 @@ namespace Boikon
             CB_Bewerker.Items.Add("Alexander Mosselaar");
             CB_Bewerker.Items.Add("Guido Ruijs");
             CB_Bewerker.Items.Add("Sander Reinders");
+            CB_Bewerker.Items.Add("Job van der Mark");
+            CB_Bewerker.Items.Add("Jurre ten Brink");
+            CB_Bewerker.Items.Add("Anne-Maaike Hendriks");
+            CB_Bewerker.Items.Add("Brand Petersen");
         }
         private void Write_Log()
         {
-            using (StreamWriter writer = new StreamWriter("C:/Users/alexander/Downloads/Log.txt"))
+            using (StreamWriter writer = new StreamWriter("C:/Users/sande/Downloads/Boikoncode/Log.txt"))
             {
                 int lengte = 50;
                 writer.WriteLine("Projectnummer: " + tbGegevensProjectnr.Text);
@@ -182,13 +189,33 @@ namespace Boikon
 
             }
         }
+        private void Retrieve_CSV()
+        {
+            OpenFileDialog csv = new OpenFileDialog();
+            csv.ShowDialog();
+            CSV ProjectInfo = new CSV();
+            string[] ProjectArray;
 
+            DataTable dt = new DataTable();
+            dt.Columns.Add("Product", typeof(string));
+            dt.Columns.Add("ProductCode", typeof(string));
+
+            using(StreamReader sr = new StreamReader(csv.FileName))
+            {
+                while (!sr.EndOfStream)
+                {
+                    ProjectArray = sr.ReadLine().Split(',');
+                    ProjectInfo.Product = ProjectArray[0];
+                    ProjectInfo.ProductCode = ProjectArray[1];
+
+                    dt.Rows.Add(ProjectArray);
+                }
+                
+            }
+        }
         private void tbZaagAantal_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
     }
 }
-
-
-
