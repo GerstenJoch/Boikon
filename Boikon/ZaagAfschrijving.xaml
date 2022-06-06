@@ -9,28 +9,28 @@
         d:DesignWidth="1920" d:DesignHeight="1080"
         >
     <Grid>
-        <Grid Name="ZaagInterface" Visibility="Collapsed">
+        <Grid Name="ZaagInterface" Visibility="Collapsed" >
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="304*"/>
-                <ColumnDefinition Width="269*"/>
-                <ColumnDefinition Width="387*"/>
+                <ColumnDefinition Width="268*" MaxWidth="536"/>
+                <ColumnDefinition Width="268*" MaxWidth="536"/>
+                <ColumnDefinition Width="147*"/>
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="auto" MinHeight="218"/>
-                <RowDefinition Height="266*"/>
-                <RowDefinition Height="165*"/>
+                <RowDefinition Height="75*" MaxHeight="224"/>
+                <RowDefinition Height="147*" MaxHeight="391" />
+                <RowDefinition Height="67*"/>
             </Grid.RowDefinitions>
 
-            <GroupBox Grid.Column="0" Grid.Row="0" Margin="10,10,22,10">
+            <GroupBox Grid.Column="0" Grid.Row="0">
                 <GroupBox.Header>
                     <TextBlock>
                     <Span FontWeight="Bold">Gegevens</Span>
                     </TextBlock>
                 </GroupBox.Header>
 
-                <Grid Height="157" Margin="0,0,-12,0">
+                <Grid Height="157">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="30"/>
                         <RowDefinition Height="30"/>
@@ -38,12 +38,8 @@
                         <RowDefinition Height="70"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1"/>
-                        <ColumnDefinition Width="13"/>
-                        <ColumnDefinition Width="86"/>
-                        <ColumnDefinition Width="200"/>
-                        <ColumnDefinition Width="33*"/>
-                        <ColumnDefinition Width="761*"/>
+                        <ColumnDefinition Width="95"/>
+                        <ColumnDefinition Width="150"/>
                     </Grid.ColumnDefinitions>
                     <Label Grid.Column="0" Content="Projectnummer:" VerticalAlignment="Center" Grid.ColumnSpan="3"/>
                     <ComboBox Grid.Column="3" Name="CB_GegevensProjectnr" VerticalAlignment="Center" SelectionChanged="CB_GegevensProjectnr_SelectionChanged"/>
@@ -55,7 +51,7 @@
                     <ComboBox Grid.Row="3" Grid.Column="3" Name="CB_Bewerker" VerticalAlignment="Top" SelectedValue="{Binding Path=Responsible}" Margin="0,6,0,0"  />
                 </Grid>
             </GroupBox>
-            <GroupBox Grid.Row="0" Margin="0,10,10,10" Grid.Column="1">
+            <GroupBox Grid.Row="0" Grid.Column="1">
                 <GroupBox.Header>
                     <TextBlock HorizontalAlignment="Left" Width="27">
                     <Span FontWeight="Bold">Zaag</Span>
@@ -93,86 +89,122 @@
                 </Grid>
             </GroupBox>
 
-            <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="2">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="46*"/>
-                    <RowDefinition Height="9*"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1201*"/>
-                    <ColumnDefinition Width="719*"/>
-                    <ColumnDefinition Width="auto"/>
-                </Grid.ColumnDefinitions>
-                <GroupBox Grid.Row="0" Grid.Column="0" Margin="10,0,65,148">
+            <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="1">
+                
+                <GroupBox Grid.Row="0" Grid.Column="0">
                     <GroupBox.Header>
                         <TextBlock><Run x:Name="lblAfschrijving" FontWeight="Bold" Text="Afschrijving"/></TextBlock>
                     </GroupBox.Header>
-                </GroupBox>
-                <Grid Grid.Row="0" Grid.RowSpan="1" Margin="11,40,0,148" HorizontalAlignment="Left" Width="1190">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="37"/>
-                        <RowDefinition Height="37"/>
-                        <RowDefinition/>
-                        <RowDefinition Height="163.945"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="110"/>
-                        <ColumnDefinition Width="65"/>
-                        <ColumnDefinition Width="116"/>
-                        <ColumnDefinition Width="496*"/>
-                        <ColumnDefinition Width="69*"/>
-                    </Grid.ColumnDefinitions>
-                    <GroupBox Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Left" Width="230" Height="230" Margin="32,17,0,0" Grid.ColumnSpan="3">
-                        <GroupBox.Header>
-                            <TextBlock><Span FontWeight="Bold"><Run Text="Sticker"/></Span></TextBlock>
-                        </GroupBox.Header>
-                    </GroupBox>
-                    <Button Grid.Row="2" Style="{StaticResource BTN_Upload}" Height="130" VerticalAlignment="Top" HorizontalAlignment="Left" Width="130" x:Name="BTN_Upload" Click="BTN_Upload_Click" Margin="82,58,0,0" Grid.ColumnSpan="3">
-                        <Button.Background>
-                            <ImageBrush ImageSource="Files/UploadCamera.png"/>
-                        </Button.Background>
-                        <TextBlock Margin="0,85,0,0" x:Name="lblAfschrijvingUploadSticker"><Run Text="Upload Sticker"/></TextBlock>
-                    </Button>
-                    <Label Grid.Row="3" Grid.Column="3" x:Name="lblAfschrijvingError" HorizontalAlignment="Left"  Content="U hebt nog niet alles juist ingevoerd." Foreground="Red" FontSize="12" Visibility="Collapsed" Margin="633,23,0,41" Width="201" Grid.ColumnSpan="2"/>
-                    <Label Grid.Row="1" Grid.Column="0" Content="Actueel Gebruik:" x:Name="lblAfschrijvingActueelGebruik" VerticalAlignment="Center" FontSize="12" Height="26" Background="#03FFFFFF" />
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20*" MaxHeight="21"/>
+                            <RowDefinition Height="50*" MaxHeight="51"/>
+                            <RowDefinition Height="230*" MaxHeight="241"/>
+                            <RowDefinition Height="5*" MaxHeight="5"/>
+                            <RowDefinition Height="40*" MaxHeight="42"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*" MaxWidth="12"/>
+                            <ColumnDefinition Width="61*" MaxWidth="244"/>
+                            <ColumnDefinition Width="7*" MaxWidth="28"/>
+                            <ColumnDefinition Width="184*" MaxWidth="736"/>
+                            <ColumnDefinition Width="10*" MaxWidth="40"/>
+                        </Grid.ColumnDefinitions>
 
-                    <Label Grid.Column="0" Content="Verwacht Gebruik:" VerticalAlignment="Center" FontSize="12" Height="26" />
-                    <TextBox Grid.Column="1" x:Name="tbAfschrijvingVerwachtGebruik" IsEnabled="False" Text="" VerticalAlignment="Center" Height="18"/>
-                    <Label Grid.Column="1" Content="m" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="12" Height="26" IsEnabled="False" Margin="45,0,0,0" Width="20" />
-                    <TextBox Grid.Row="1" Grid.Column="1" x:Name="tbAfschrijvingActueelGebruik" VerticalAlignment="Center" Height="18" />
-                    <StackPanel Grid.Row="2" Grid.Column="3" Grid.RowSpan="2" Orientation="Horizontal" HorizontalAlignment="Left" Width="109" Margin="679,271,0,6" >
-                        <Button Content="Verstuur" Width="109" Height="37" x:Name="BTN_Push" Click="BTN_Send_Click" FontSize="15" Grid.ColumnSpan="3" Grid.RowSpan="3"/>
-                    </StackPanel>
-                    <TextBox Grid.Column="3" x:Name="tbAfschrijvingReden" Margin="0,12,102,0" Grid.RowSpan="3" Grid.ColumnSpan="2" Height="308" VerticalAlignment="Top"/>
-                    <Label Grid.Column="3" Grid.Row="0" Content="Reden (Alleen invullen indien anders gebruikt dan verwacht):" x:Name="lblAfschrijvingReden" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="12" Height="26" Width="332" Margin="0,-8,0,0" />
-                    <Label Grid.Row="1" Grid.Column="1" Content="m" VerticalAlignment="Center" x:Name ="lblAfschrijvingActueelGebruikEendheid"  HorizontalAlignment="Left" FontSize="12" Height="26" Margin="45,0,0,0" Width="20" />
-                    <Label Grid.Row="2" x:Name="lblAfschrijvingStickerConfirmation" Content="" VerticalContentAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Center" FontStyle="Italic" FontSize="10" Visibility="Visible" Width="230" Height="37" VerticalAlignment="Top" Margin="32,174,0,0" Grid.ColumnSpan="3" />
-                </Grid>
+                        <Label Grid.Row="4" Grid.Column="4" x:Name="lblAfschrijvingError" HorizontalAlignment="Left"  Content="U hebt nog niet alles juist ingevoerd." Foreground="Red" FontSize="12" Visibility="Collapsed" Margin="357,15,0,4" Width="201"/>
+
+
+                        <Grid Grid.Column="1" Grid.Row="1" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="5*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="5*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150*"/>
+                                <ColumnDefinition Width="199*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Content="Verwacht Gebruik:" VerticalAlignment="Center" FontSize="12" VerticalContentAlignment="Top" Height="23" />
+                            <TextBox Grid.Column="1" Grid.Row="0" x:Name="tbAfschrijvingVerwachtGebruik" IsEnabled="False" Text="" Margin="6,0,0,0"/>
+                            <Label Grid.Row="2" Grid.Column="0" Content="Actueel Gebruik:" x:Name="lblAfschrijvingActueelGebruik" FontSize="12" Background="#03FFFFFF" />
+                            <TextBox Grid.Row="2" Grid.Column="1" x:Name="tbAfschrijvingActueelGebruik" Margin="6,0,0,0"/>
+                            <Label Grid.Row="2" Grid.Column="1" Content="m" x:Name ="lblAfschrijvingActueelGebruikEendheid"  HorizontalAlignment="Right" FontSize="12"/>
+                            <Label Grid.Row="0" Grid.Column="1" Content="m" HorizontalAlignment="Right" FontSize="12" IsEnabled="False"/>
+                        </Grid>
+                        <Grid Grid.Row="4" Grid.Column="3" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="5*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Row="0" Grid.Column="1" Content="Verstuur" x:Name="BTN_Push" Click="BTN_Send_Click" FontSize="15" />
+                        </Grid>
+                        <Label Grid.Column="3" Grid.Row="0" Grid.RowSpan="1" Content="Reden (Alleen invullen indien anders gebruikt dan verwacht):" x:Name="lblAfschrijvingReden" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="12" Height="26" Width="330" />
+                        <GroupBox Grid.Row="2" Grid.Column="1" >
+
+                            <GroupBox.Header>
+                                <TextBlock><Span FontWeight="Bold"><Run Text="Sticker"/></Span></TextBlock>
+                            </GroupBox.Header>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="5*"/>
+                                    <RowDefinition Height="1*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="8*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="1" Grid.Row="2" x:Name="lblAfschrijvingStickerConfirmation" Content="" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" FontStyle="Italic" FontSize="10" Visibility="Visible" VerticalAlignment="Top"/>
+                                <Button Grid.Row="1" Grid.Column="1" Style="{StaticResource BTN_Upload}" x:Name="BTN_Upload" Click="BTN_Upload_Click">
+                                    <Button.Background>
+                                        <ImageBrush ImageSource="Files/UploadCamera.png"/>
+                                    </Button.Background>
+                                    <TextBlock Margin="0,120,0,0" x:Name="lblAfschrijvingUploadSticker"><Run Text="Upload Sticker"/></TextBlock>
+                                </Button>
+                            </Grid>
+                        </GroupBox>
+                        <TextBox Grid.Column="3" x:Name="tbAfschrijvingReden" Grid.RowSpan="3" Margin="0,20,0,0"/>
+                    </Grid>
+                </GroupBox>
                 <TextBlock Text="" Height="35" HorizontalAlignment="Left" x:Name="errorLabel" Width="310" Background="#FFA30000" Foreground="White" Visibility="Collapsed" TextWrapping="Wrap" VerticalAlignment="Bottom" Grid.Row="1"/>
             </Grid>
         </Grid>
         <Grid Name="Project_Select" Visibility="Visible">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="3*" MaxWidth="720"/>
+                <ColumnDefinition Width="2*" MaxWidth="480"/>
+                <ColumnDefinition Width="3*" MaxWidth="720"/>
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
+                <RowDefinition Height="2*" MaxHeight="310"/>
+                <RowDefinition Height="3*" MaxHeight="462"/>
+                <RowDefinition Height="2*" MaxHeight="310"/>
             </Grid.RowDefinitions>
-            <GroupBox Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="300" Height="300" Grid.Column="1">
+            <GroupBox Grid.Row="1" Grid.Column="1">
                 <GroupBox.Header>
                     <TextBlock><Span FontWeight="Bold"><Run Text="Import"/></Span></TextBlock>
                 </GroupBox.Header>
             </GroupBox>
-            <Button Grid.Row="1" Grid.Column="1" Style="{StaticResource BTN_Upload}" Height="200" VerticalAlignment="Center" HorizontalAlignment="Center" Width="200" x:Name="BTN_CSVUpload" Click="BTN_CSVUpload_Click">
+            <Grid Grid.Column="1" Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" MinWidth="49" MaxWidth="49"/>
+                    <ColumnDefinition Width="5*" MinWidth="243" MaxWidth="381"/>
+                    <ColumnDefinition Width="1*" MinWidth="49" MaxWidth="72"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*" MinHeight="47" MaxHeight="66" />
+                    <RowDefinition Height="5*" MinHeight="235" MaxHeight="330"/>
+                    <RowDefinition Height="1*" MinHeight="50" MaxHeight="50"/>
+                </Grid.RowDefinitions>
+                <Button Grid.Row="1" Grid.Column="1" Style="{StaticResource BTN_Upload}" x:Name="BTN_CSVUpload" Click="BTN_CSVUpload_Click">
                 <Button.Background>
                     <ImageBrush ImageSource="Files/CSVUploadIcon.png"/>
                 </Button.Background>
             </Button>
+            </Grid>
 
         </Grid>
     </Grid>
