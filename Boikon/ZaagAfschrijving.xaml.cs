@@ -27,7 +27,7 @@ namespace Boikon
     /// 
     public partial class ZaagAfschrijving : UserControl
     {
-
+        //Declaratie objects
         OpenFileDialog fotoSticker = new OpenFileDialog();
         OpenFileDialog csv = new OpenFileDialog();
         List<string> artikelen = new List<string>();
@@ -107,6 +107,7 @@ namespace Boikon
                     CB_Profiel.IsEnabled = false;
                     CB_GegevensProjectnaam.IsEnabled = false;
                     CB_GegevensProjectnr.IsEnabled = false;
+                    BTN_Send.IsEnabled = false;
                     tbAfschrijvingVerwachtGebruik.Text = verwachtGebruik.ToString();
 
                 }
@@ -148,10 +149,8 @@ namespace Boikon
                     MessageBoxResult result = MessageBox.Show(msgtext, txt, button);
                     //Clear Recent Input
                     tbAfschrijvingReden.Clear(); tbAfschrijvingActueelGebruik.Clear(); tbAfschrijvingVerwachtGebruik.Clear(); tbZaagAantal.Clear();
-                    lblAfschrijvingStickerConfirmation.Visibility = Visibility.Collapsed; tbZaagLengte.Clear(); tbGegevensProjectleider.Clear();
+                    lblAfschrijvingStickerConfirmation.Visibility = Visibility.Collapsed; tbZaagLengte.Clear(); tbGegevensProjectleider.Clear(); tbZaagHuidigeVoorraad.Clear();
                     CB_Artikel.Items.Clear(); CB_Bewerker.Items.Clear(); CB_GegevensProjectnr.Items.Clear(); CB_GegevensProjectnaam.Items.Clear(); CB_Profiel.Items.Clear();
-                    Project_Select.Visibility = Visibility.Visible;
-                    ZaagInterface.Visibility = Visibility.Collapsed;
                     artikelen.Clear(); profielen.Clear(); CSVfiles.Clear();
                     tbZaagAantal.IsEnabled = true;
                     CB_Artikel.IsEnabled = true;
@@ -159,6 +158,9 @@ namespace Boikon
                     CB_Profiel.IsEnabled = true;
                     CB_GegevensProjectnaam.IsEnabled = true;
                     CB_GegevensProjectnr.IsEnabled = true;
+                    BTN_Send.IsEnabled = true;
+                    Project_Select.Visibility = Visibility.Visible;
+                    ZaagInterface.Visibility = Visibility.Collapsed;
                 }
             }
         }
@@ -167,7 +169,7 @@ namespace Boikon
             if (CB_GegevensProjectnr.SelectedIndex != -1)
             {
                 CB_Profiel.Items.Clear(); CB_Artikel.Items.Clear(); artikelen.Clear(); profielen.Clear(); tbZaagLengte.Clear(); tbZaagAantal.Clear(); CB_Bewerker.SelectedIndex = -1;
-                using (var reader = new StreamReader(CSVfiles[CB_GegevensProjectnr.SelectedItem.ToString()]))
+                using (var reader = new StreamReader(CSVfiles[CB_GegevensProjectnr.SelectedItem.ToString()])) //CSVfile['projectnummer'] geeft filename die in een hashmap/IDictionary staat
                 {
                     while (!reader.EndOfStream)
                     {
@@ -230,7 +232,6 @@ namespace Boikon
                     if (artikelSplit[1].StartsWith(stuknr))
                     {
                         selected_artikel = artikel;
-                        Console.WriteLine(selected_artikel);
                     }
                 }
             }
@@ -249,9 +250,9 @@ namespace Boikon
 
                     if (artikelSplit[2].StartsWith(content))
                     {
-                        CB_Artikel.Items.Add(artikelSplit[0] + ": " + artikelSplit[1] + ": " + artikelSplit[2] + ": " + artikelSplit[3] + ": " + artikelSplit[4] + ": " + artikelSplit[5] + ": " + artikelSplit[6] + ": " + artikelSplit[7]);
+                        CB_Artikel.Items.Add(artikelSplit[0] + ": " + artikelSplit[1] + ": " + artikelSplit[2] + ": " + artikelSplit[3] + ": " + artikelSplit[4] + ": " + artikelSplit[5] + ": " + artikelSplit[6] + ": " + artikelSplit[7] + ": " + artikelSplit[8]);
                         profiel = artikelSplit[2];
-                        tbZaagHuidigeVoorraad.Text = "";
+                        tbZaagHuidigeVoorraad.Clear();
 
                     }
                 }
@@ -259,7 +260,7 @@ namespace Boikon
                 {
                     var profielSplit = profile.Split(';');
                     var profileContent = (profielSplit[0].Split(delimiter, StringSplitOptions.RemoveEmptyEntries))[0];
-                    if (profiel.StartsWith(profileContent) || profiel.Equals(profileContent))
+                    if (profiel.StartsWith(profileContent))
                     {
                         if (profielSplit.Length > 1)
                         {
@@ -359,7 +360,7 @@ namespace Boikon
         }
         private void Update_Voorraad()
         {
-            string path = CSVfiles[CB_GegevensProjectnr.SelectedItem.ToString()];
+            string path = CSVfiles[CB_GegevensProjectnr.SelectedItem.ToString()]; //CSVfile['projectnummer'] geeft filename die in een hashmap/IDictionary staat
             List<String> lines = new List<String>();
             using (StreamReader reader = new StreamReader(path))
             {

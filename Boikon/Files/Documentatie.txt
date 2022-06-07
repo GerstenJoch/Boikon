@@ -1,0 +1,78 @@
+/////////////////////////////////////////////////////////////////////////////////
+//													 //
+//                        Boikon app zaagafschrijving                          //
+//					   Documentatie						 //
+//													 //
+/////////////////////////////////////////////////////////////////////////////////
+
+Dit is een Documentatie om uit te leggen waar alle Functions en Classes voor zijn in de code
+
+BTN_CSVUpload_Click():
+	- Knop om CSV bestanden uit te kiezen uit file explorer
+	- Initieert bewerkers {Init_Bewerkers()} uit een SQL database en kijkt welke
+	- bestanden geimporteerd zijn {Retrieve_CSV()}
+	- Daarnaa switcht het over naar het scherm voor zaagopdrachten & afschrijvingen
+BTN_Send_Click():
+	- Kijkt eerst of de knop 'BTN_Send' (Stuur zaagopdracht) of 'BTN_Push' is (Verstuur afschrijving)
+	- In het geval 'BTN_Send':
+		- Kijkt voor elk relevant component of ze juist ingevult zijn 
+		- Zo niet, kleurt label rood & zegt dat er iets niet juist is ingevult
+		- Zo ja, stuurt informatie naar SQL Database {Zaag_log()}, Vertelt dat goed is vertuurd, maakt alle componenten niet meer bewerkbaar
+		- Berekent een verwacht gebruikt (lengte profiel * aantal) en zet deze in tbAfschrijvingVerwachtGebruikt
+	- Int het geval 'BTN_Push':
+		- Kijkt voor elk relevant component of ze juist ingevult zijn 
+		- Zo niet, kleurt label rood & zegt dat er iets niet juist is ingevult
+		- Zo ja, stuurt informatie naar SQL Database {Afschrijving_log()}, Vertert dat goed is vertuurd, 
+		- Verwijdert alle ingevulde data en maakt alle componenten weer bewerkbaar
+		- Verandert weer naar CSV Upload scherm
+CB_GegevensProjectnr_SelectionChanged():
+	- Leest het geselecteerde csv bestand uit:
+		- Leest projectleider uit bij: "if (values[i].StartsWith("Ingevuld door"))"
+		- Leest alle artikelen uit en stopt ze in een list
+		- Leest alle profielen uit en stopt ze in de CB_Profiel en in een list
+CB_Artikel_SelectionChanged():
+	- Kijkt welk artikel hij heeft geselecteerd en stopt in variabele
+	- Leest huidige voorraad en zet deze in tbZaagHuidigeVoorraad
+CB_Profiel_SelectionChanged():
+	- Gaat door alle artikelen heen om te kijken welke horen bij geselecteerde profiel
+	- Als het zelfde profiel is, stopt artikelen in CB_Artikel met gegevens: Aanz.nr t/m Verv.Bewerking
+	- Stopt geselecteerde profiel in variabele
+	- Gaat door list met profielen om lengte profiel te vinden en zet deze in tbZaagLengte
+BTN_Upload_Click():
+	- Open file explorer om foto te kiezen voor de sticker
+	- Leest filename uit en leest laatste stuk van filename uit om deze te zetten in lblAfschrijvingStickerConfirmation
+Init_Bewerkers():
+	- Connect met MySQL database met 10 hardcoded namen en zet voornaam en achternaam in CB_Bewerker
+Retrieve_CSV():
+	- Gaat door alle gekozen files heen, haat uit de filename het projectnummer en zet deze in CB_GegevensProjectnr
+	- Zet het projectnummer en filename in een hashmap/IDictionary
+Zaag_Log():
+	- Maakt connectie met database en vult de onderstaande waardes in:
+		- projectnr
+		- projectleider
+		- projectnaam
+		- bewerker
+		- profiel
+		- artikel
+		- tijd van sturen
+	- Deze informatie hoort uiteindelijk naar de tigerstop software te gaan
+Afschrijving_Log():
+	- Update de huidige voorraad
+	- Maakt connectie met database en vult de onderstaande waardes in:
+		- projectnr
+		- projectleider
+		- projectnaam
+		- bewerker
+		- artikel
+		- verwacht gebruik
+		- actueel gebruik
+		- huidige voorraad
+		- reden
+		- sticker
+		- tijd van sturen
+Update_Voorraad():
+	- Zoekt filename
+	- Gaat door alle lines heen en als aangekomen bij geselecteerd artikel, verandert het de lengte na het zagen
+	- Stopt alle lines, samen met de geupdate line in een list en herschrijft het CSV bestand
+	- Hierdoor is alleen de lengte van het geselecteerde artikel (huidige voorraad) verandert in het CSV bestand zelf
+

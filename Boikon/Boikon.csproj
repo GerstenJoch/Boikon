@@ -176,5 +176,8 @@
   <ItemGroup>
     <Resource Include="Files\UploadCamera.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Files\Documentatie.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
