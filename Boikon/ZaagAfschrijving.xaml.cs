@@ -218,12 +218,15 @@ namespace Boikon
             {
                 var content = CB_Artikel.SelectedItem.ToString();
                 string[] delimiter = { ": " };
-                content = (content.Split(delimiter, StringSplitOptions.None))[1];
+                var contents = (content.Split(delimiter, StringSplitOptions.None));
+                var stuknr = contents[1];
+                var voorraad = contents[4];
+                tbZaagHuidigeVoorraad.Text = voorraad + " m";
                 foreach (var artikel in artikelen)
                 {
                     var artikelSplit = artikel.Split(';');
 
-                    if (artikelSplit[1].StartsWith(content))
+                    if (artikelSplit[1].StartsWith(stuknr))
                     {
                         selected_artikel = artikel;
                         Console.WriteLine(selected_artikel);
@@ -247,6 +250,8 @@ namespace Boikon
                     {
                         CB_Artikel.Items.Add(artikelSplit[0] + ": " + artikelSplit[1] + ": " + artikelSplit[2] + ": " + artikelSplit[3] + ": " + artikelSplit[4] + ": " + artikelSplit[5] + ": " + artikelSplit[6] + ": " + artikelSplit[7]);
                         profiel = artikelSplit[2];
+                        tbZaagHuidigeVoorraad.Text = "";
+
                     }
                 }
                 foreach (var profile in profielen)

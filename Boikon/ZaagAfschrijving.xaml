@@ -62,13 +62,13 @@
                         <RowDefinition Height="56"/>
                         <RowDefinition Height="26"/>
                         <RowDefinition Height="26"/>
-                        <RowDefinition Height="17"/>
-                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="26"/>
+                        <RowDefinition Height="59"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="50"/>
-                        <ColumnDefinition Width="72"/>
-                        <ColumnDefinition Width="144"/>
+                        <ColumnDefinition Width="61"/>
+                        <ColumnDefinition Width="66"/>
+                        <ColumnDefinition Width="148"/>
                         <ColumnDefinition/>
                         <ColumnDefinition Width="0*"/>
                     </Grid.ColumnDefinitions>
@@ -76,21 +76,23 @@
                     <StackPanel Grid.Row="2" Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Right" Grid.RowSpan="3" Margin="0,14,27,10" Width="81">
                         <Button Content="Stuur" Width="81" Height="29" x:Name="BTN_Send" Click="BTN_Send_Click" FontSize="14"/>
                     </StackPanel>
-                    <Label Grid.Row="2" Grid.Column="3" x:Name="lblZaagError"  Content="U hebt nog niet alles juist ingevoerd" Foreground="Red" FontSize="10" Visibility="Collapsed" Margin="85,21,-6,55" Grid.RowSpan="3" Grid.ColumnSpan="2"/>
+                    <Label Grid.Row="2" Grid.Column="3" x:Name="lblZaagError"  Content="U hebt nog niet alles juist ingevoerd" Foreground="Red" FontSize="10" Visibility="Collapsed" Margin="85,21,-6,0" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
                     <Label Grid.Row="1" Grid.Column="0" Content="Aantal:" x:Name="lblZaagAantal"  VerticalAlignment="Center" FontSize="12" Height="26" />
                     <TextBox Grid.Row="1" Grid.Column="1" x:Name="tbZaagAantal" VerticalAlignment="Center" Height="18"/>
                     <Label Grid.Row="2" Grid.Column="0" Content="Lengte:" VerticalAlignment="Center" FontSize="12" Height="26" />
                     <TextBox Grid.Row="2" Grid.Column="1" x:Name="tbZaagLengte" VerticalAlignment="Center" IsEnabled="False" Height="18"/>
-                    <Label Grid.Column="3" Content="Artikel:" x:Name="lblZaagArtikel"  VerticalAlignment="Top" Height="30" Margin="11,-8,21,0" FontSize="11"/>
+                    <Label Grid.Row="3" Grid.Column="0" Content="Voorraad:" x:Name="lblZaagHuidigeVoorraad"  VerticalAlignment="Center" FontSize="12" Height="26" />
+                    <TextBox Grid.Row="3" Grid.Column="1" x:Name="tbZaagHuidigeVoorraad" VerticalAlignment="Center" IsEnabled="False" Height="18"/>
+                    <Label Grid.Column="3" Content="Artikel:" x:Name="lblZaagArtikel"  VerticalAlignment="Top" Height="30" Margin="10,-8,22,0" FontSize="11"/>
                     <ComboBox Grid.Column="3" x:Name="CB_Artikel" VerticalAlignment="Top" SelectedValue="{Binding Responsible}" Height="22" SelectionChanged="CB_Artikel_SelectionChanged" HorizontalAlignment="Center" Width="218" Margin="0,10,0,0"/>
-                    <Label Grid.Column="1" Content="Profiel:" x:Name="lblZaagProfiel"  VerticalAlignment="Top" Height="30" Margin="66,-8,6,0" FontSize="11" Grid.ColumnSpan="2"/>
-                    <ComboBox x:Name="CB_Profiel" VerticalAlignment="Top" SelectedValue="{Binding Responsible}" Height="22" SelectionChanged="CB_Profiel_SelectionChanged" HorizontalAlignment="Center" Width="144" Margin="0,10,0,0" Grid.Column="2"/>
+                    <Label Grid.Column="1" Content="Profiel:" x:Name="lblZaagProfiel" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="60,-8,0,0" FontSize="11" Grid.ColumnSpan="2"/>
+                    <ComboBox x:Name="CB_Profiel" VerticalAlignment="Top" SelectedValue="{Binding Responsible}" Height="22" SelectionChanged="CB_Profiel_SelectionChanged" Margin="0,10,0,0" Grid.Column="2"/>
 
                 </Grid>
             </GroupBox>
 
             <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="1">
-                
+
                 <GroupBox Grid.Row="0" Grid.Column="0">
                     <GroupBox.Header>
                         <TextBlock><Run x:Name="lblAfschrijving" FontWeight="Bold" Text="Afschrijving"/></TextBlock>
@@ -200,10 +202,10 @@
                     <RowDefinition Height="1*" MinHeight="50" MaxHeight="50"/>
                 </Grid.RowDefinitions>
                 <Button Grid.Row="1" Grid.Column="1" Style="{StaticResource BTN_Upload}" x:Name="BTN_CSVUpload" Click="BTN_CSVUpload_Click">
-                <Button.Background>
-                    <ImageBrush ImageSource="Files/CSVUploadIcon.png"/>
-                </Button.Background>
-            </Button>
+                    <Button.Background>
+                        <ImageBrush ImageSource="Files/CSVUploadIcon.png"/>
+                    </Button.Background>
+                </Button>
             </Grid>
 
         </Grid>
