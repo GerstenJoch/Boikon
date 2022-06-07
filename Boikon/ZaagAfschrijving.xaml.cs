@@ -27,14 +27,14 @@ namespace Boikon
     /// 
     public partial class ZaagAfschrijving : UserControl
     {
-        
+
         OpenFileDialog fotoSticker = new OpenFileDialog();
         OpenFileDialog csv = new OpenFileDialog();
         List<string> artikelen = new List<string>();
         List<string> profielen = new List<string>();
         IDictionary<string, string> CSVfiles = new Dictionary<string, string>();
         string profiel, lengte, selected_artikel, huidige_voorraad;
-        
+
         public ZaagAfschrijving()
         {
             InitializeComponent();
@@ -112,7 +112,8 @@ namespace Boikon
                 }
             }
 
-            if (sender.Equals(BTN_Push)) {        //Afschrijving
+            if (sender.Equals(BTN_Push))
+            {        //Afschrijving
                 double i;
                 if (String.IsNullOrEmpty(tbAfschrijvingActueelGebruik.Text) || !Double.TryParse(tbAfschrijvingActueelGebruik.Text, out i))
                 {
@@ -147,7 +148,7 @@ namespace Boikon
                     MessageBoxResult result = MessageBox.Show(msgtext, txt, button);
                     //Clear Recent Input
                     tbAfschrijvingReden.Clear(); tbAfschrijvingActueelGebruik.Clear(); tbAfschrijvingVerwachtGebruik.Clear(); tbZaagAantal.Clear();
-                    lblAfschrijvingStickerConfirmation.Visibility = Visibility.Collapsed; tbZaagLengte.Clear(); tbGegevensProjectleider.Clear(); 
+                    lblAfschrijvingStickerConfirmation.Visibility = Visibility.Collapsed; tbZaagLengte.Clear(); tbGegevensProjectleider.Clear();
                     CB_Artikel.Items.Clear(); CB_Bewerker.Items.Clear(); CB_GegevensProjectnr.Items.Clear(); CB_GegevensProjectnaam.Items.Clear(); CB_Profiel.Items.Clear();
                     Project_Select.Visibility = Visibility.Visible;
                     ZaagInterface.Visibility = Visibility.Collapsed;
@@ -276,12 +277,12 @@ namespace Boikon
             Nullable<bool> dialogOK = fotoSticker.ShowDialog();
             if (dialogOK == true)
             {
-                    string sFileName = fotoSticker.FileName;
-                    string[] UploadName = sFileName.Split('\\');
-                    lblAfschrijvingStickerConfirmation.Content = UploadName.Last();
-                    lblAfschrijvingStickerConfirmation.Visibility = Visibility.Visible;
-                    lblAfschrijvingUploadSticker.Foreground = Brushes.Black;
-                    lblAfschrijvingStickerConfirmation.Foreground = Brushes.Black;
+                string sFileName = fotoSticker.FileName;
+                string[] UploadName = sFileName.Split('\\');
+                lblAfschrijvingStickerConfirmation.Content = UploadName.Last();
+                lblAfschrijvingStickerConfirmation.Visibility = Visibility.Visible;
+                lblAfschrijvingUploadSticker.Foreground = Brushes.Black;
+                lblAfschrijvingStickerConfirmation.Foreground = Brushes.Black;
             }
         }
         private void Init_Bewerkers()
