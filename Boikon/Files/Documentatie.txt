@@ -1,8 +1,8 @@
 /////////////////////////////////////////////////////////////////////////////////
-//													 //
+//					                                       //
 //                        Boikon app zaagafschrijving                          //
-//					   Documentatie						 //
-//													 //
+//					   Documentatie			       //
+//									       //
 /////////////////////////////////////////////////////////////////////////////////
 
 Dit is een Documentatie om uit te leggen waar alle Functions en Classes voor zijn in de code
